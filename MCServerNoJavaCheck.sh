@@ -299,23 +299,6 @@ sudo apt-get update
 sudo apt-get install screen curl -y
 sudo apt-get install net-tools -y
 
-# Install Java dependency
-Install_Java
-
-# Check if Java installation was successful
-if [ -n "$(which java)" ]; then
-  CurrentJava=$(java -version 2>&1 | head -1 | cut -d '"' -f 2 | cut -d '.' -f 1)
-  if [[ $CurrentJava -ge 16 ]]; then
-    Print_Style "Java installed successfully" "$GREEN"
-    else
-      Print_Style "Java did not install successfully -- please install manually or check the above output to see what went wrong and run the installation script again." "$RED"
-      exit 1
-    fi
-else
-  Print_Style "Java did not install successfully -- please install manually or check the above output to see what went wrong and run the installation script again." "$RED"
-  exit 1
-fi
-
 # Get directory path (default ~)
 until [ -d "$DirName" ]
 do
